@@ -1,0 +1,28 @@
+{
+  "name": "local-farmers-market",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kritikaadhikarii/Local-Farmers-Market.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kritikaadhikarii/Local-Farmers-Market/issues"
+  },
+  "homepage": "https://github.com/Kritikaadhikarii/Local-Farmers-Market#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.3",
+    "nodemailer": "^6.9.13",
+    "nodemon": "^3.1.0"
+  }
+}
