@@ -1,12 +1,12 @@
-// import React from 'react'
 import React, { useEffect, useState } from "react";
-import "./App.css"
+import "./App.css";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import {LoginPage, SignupPage} from "./Routes.js";
-import ActivationPage from './pages/ActivationPage.jsx';
+import {LoginPage, SignupPage, ActivationPage, HomePage} from "./Routes.js";
+// import ActivationPage from './pages/ActivationPage.jsx';
 import {ToastContainer, toast} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import 'react-toastify/dist/ReactToastify.css';
 import { loadUser } from './redux/actions/user.js';
+import Store from "./redux/store";
 
 const App = () => {
   useEffect(() => {
@@ -25,12 +25,13 @@ const App = () => {
 
     <BrowserRouter>
     <Routes>
+      <Route path='/' element={<HomePage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/signup' element={<SignupPage />} />
-      <Route path='/activation/:activation:token' element={<ActivationPagePage />} />
+      <Route path='/activation/:activation:token' element={<ActivationPage />} />
     </Routes>
 
-    //uusing it for notifications
+    {/* // uusing it for notifications */}
     <ToastContainer
         position="bottom-center"
         autoClose={5000}
