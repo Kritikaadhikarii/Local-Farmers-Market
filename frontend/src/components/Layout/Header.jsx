@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import styles from "../../styles/styles";
 import { productData } from "../../static/data";
 import { IoIosArrowForward } from "react-icons/io";
+import {BiMenuAltLeft} from 'react-icons/bi'
+import logo from "../../images/logo.png";
+
 
 const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,7 +34,7 @@ const Header = () => {
       >
         <div>
           <Link to="/">
-            <img src="../../images/logo.png" alt="logo of farmers market app" />
+            <img src={logo} alt="logo of farmers market app" style={{ width: '100px', height: '100px' }}/>
           </Link>
         </div>
 
@@ -85,17 +88,28 @@ const Header = () => {
         {/* new */}
         <div className={`${styles.button}`}>
           <Link to="/seller">
-            <h1 className="text-[#fff]
-            flex items-center">
+            <h1
+              className="text-[#fff]
+            flex items-center"
+            >
               Become Seller <IoIosArrowForward className="ml-1" />
             </h1>
           </Link>
         </div>
 
         {/* neww */}
-        <div className={`${styles.section} relative ${styles.noramlFlex} justify-between`}>
-          <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block"></div>
-        </div>
+        {/* <div
+          className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
+        >
+          <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block">
+            <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
+                <button
+                  className={`h-[100%] w-full flex justify-between items-center pl-10 bg-white font-sans text-lg font-[500] select-none rounded-t-md`}
+                >
+                  All Categories
+                </button>
+          </div>
+        </div> */}
       </div>
     </div>
   );
