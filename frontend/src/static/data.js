@@ -301,6 +301,7 @@ export const navItems = [
       rating: 4,
       total_sell: 35,
       stock: 10,
+      
     },
     {
       id: 2,
@@ -331,7 +332,7 @@ export const navItems = [
       rating: 5,
       total_sell: 80,
       stock: 10,
-      category:"Mobile & Tablets"
+      // category:"Juice"
     },
     {
       id: 1,
@@ -362,7 +363,7 @@ export const navItems = [
       rating: 4,
       total_sell: 75,
       stock: 10,
-      category:"Vegetables"
+      // category:"Vegetables"
     },
     {
       id: 4,
@@ -373,11 +374,11 @@ export const navItems = [
       image_Url: [
         {
           public_id: "test",
-          url: "https://i0.wp.com/eccocibd.com/wp-content/uploads/2022/01/1802NL02_1.png?fit=550%2C550&ssl=1",
+          url: "https://m.media-amazon.com/images/I/71syLOLl5OL._SX522_.jpg",
         },
         {
           public_id: "test",
-          url: "https://i0.wp.com/eccocibd.com/wp-content/uploads/2022/01/1802NL02_1.png?fit=550%2C550&ssl=1",
+          url: "https://m.media-amazon.com/images/I/71syLOLl5OL._SX522_.jpg",
         },
       ],
       shop: {
@@ -424,7 +425,7 @@ export const navItems = [
       rating: 5,
       total_sell: 49,
       stock: 10,
-      category:"Dairy Products"
+      // category:"Dairy Products"
     },
     {
       id: 1,
