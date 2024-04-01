@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   AiFillHeart,
   AiOutlineHeart,
@@ -6,10 +6,10 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import styles from "../../../styles/styles";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
+// import { useDispatch, useSelector } from "react-redux";
+// import { toast } from "react-toastify";
 // import { addTocart } from "../../../redux/actions/cart";
 // import {
 //   addToWishlist,
@@ -19,7 +19,7 @@ import { toast } from "react-toastify";
 const ProductDetailsCard = ({ setOpen, data }) => {
   const [count, setCount] = useState(1);
   const [click, setClick] = useState(false);
-  const [select, setSelect] = useState(false);
+  // const [select, setSelect] = useState(false);
 
   // const { cart } = useSelector((state) => state.cart);
   // const { wishlist } = useSelector((state) => state.wishlist);

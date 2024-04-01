@@ -9,15 +9,15 @@ import {
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import styles from "../../../styles/styles";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
 // import {
 //   addToWishlist,
 //   removeFromWishlist,
 // } from "../../../redux/actions/wishlist";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 // import { addTocart } from "../../../redux/actions/cart";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 // import Ratings from "../../Products/Ratings";
 
 const ProductCard = ({ data }) => {
