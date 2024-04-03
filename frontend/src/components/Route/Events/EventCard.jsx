@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/styles";
+import styles from "../../../styles/styles";
 import CountDown from "./CountDown";
 // import { Link } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
