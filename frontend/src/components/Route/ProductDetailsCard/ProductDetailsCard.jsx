@@ -95,14 +95,12 @@ const ProductDetailsCard = ({ setOpen, data }) => {
 
                 {/* for discounted price */}
                 <div className="flex pt-3">
-                  <h4 className={`${styles.productDiscountPrice}`}>
-                    {data.discountPrice}$
-                  </h4>
-                  <h3 className={`${styles.price}`}>
-                    {data.price ? data.price + "$" : null}
-                  </h3>
-
-                  
+                  <h5 className={`${styles.productDiscountPrice}`}>
+                    {data.price === 0 ? data.price : data.discount_price}$
+                  </h5>
+                  <h5 className={`${styles.price}`}>
+                    {data.price ? data.price + " $" : null}
+                  </h5>
                 </div>
 
                 <div className="flex items-center mt-12 justify-between pr-3">

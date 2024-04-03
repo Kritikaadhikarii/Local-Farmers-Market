@@ -26,43 +26,6 @@ const ProductCard = ({ data }) => {
   const d = data.name;
   const product_name = d.replace(/\s+/g, "-");
 
-  // const { wishlist } = useSelector((state) => state.wishlist);
-  // const { cart } = useSelector((state) => state.cart);
-  // const dispatch = useDispatch();
-
-  //   useEffect(() => {
-  //     if (wishlist && wishlist.find((i) => i._id === data._id)) {
-  //       setClick(true);
-  //     } else {
-  //       setClick(false);
-  //     }
-  //   }, [wishlist]);
-
-  //   const removeFromWishlistHandler = (data) => {
-  //     setClick(!click);
-  //     dispatch(removeFromWishlist(data));
-  //   };
-
-  //   const addToWishlistHandler = (data) => {
-  //     setClick(!click);
-  //     dispatch(addToWishlist(data));
-  //   };
-
-  //   const addToCartHandler = (id) => {
-  //     const isItemExists = cart && cart.find((i) => i._id === id);
-  //     if (isItemExists) {
-  //       toast.error("Item already in cart!");
-  //     } else {
-  //       if (data.stock < 1) {
-  //         toast.error("Product stock limited!");
-  //       } else {
-  //         const cartData = { ...data, qty: 1 };
-  //         dispatch(addTocart(cartData));
-  //         toast.success("Item added to cart successfully!");
-  //       }
-  //     }
-  //   };
-
   return (
     <>
       <div className="w-full h-[370px] bg-white rounded-lg shadow-sm p-3 relative cursor-pointer">
