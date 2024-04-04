@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../../../styles/styles";
 import CountDown from "./CountDown";
+import Footer from "../../Layout/Footer";
 // import { Link } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
 // import { addTocart } from "../../redux/actions/cart";
@@ -25,11 +26,14 @@ const EventCard = ({ active, data }) => {
   //   }
   // }
   return (
+
     <div
-      className={`w-full block bg-white rounded-lg ${
-        active ? "unset" : "mb-12"
-      } lg:flex p-2`}
-    >
+      className={`w-full block bg-white rounded-lg shadow-lg p-3 
+      ${ active ? "unset" 
+      : "mb-12" } 
+      
+      lg:flex p-2`}>
+
       <div className="w-full lg:-w[50%] m-auto">
         <img src="https://m.media-amazon.com/images/I/61hg1cVty6L._SL1500_.jpg" alt="" />
       </div>
@@ -53,6 +57,11 @@ const EventCard = ({ active, data }) => {
         <CountDown  />
       </div>
     </div>
+
+    
+
+
+
   );
 };
 

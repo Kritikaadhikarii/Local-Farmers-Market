@@ -1,8 +1,15 @@
 import React from 'react'
+import Header from '../components/Layout/Header'
+import EventCard from '../components/Route/Events/EventCard'
 
 const EventsPage = () => {
   return (
-    <div>EventsPage</div>
+    <div>
+        <Header activeHeading={4} />
+        <EventCard active={true} />
+        <EventCard active={true} />
+        <EventCard active={true} />
+    </div>
   )
 }
 
