@@ -30,11 +30,13 @@ const Footer = () => {
             className="text-gray-800
                 sm:w-72 w-full sm:mr-5 mr-1 lg:mb-0 mb-4 py-2.5 rounded px-2 focus:outline-none"
           />
-          <button className="bg-[#56d879] hover:bg-teal-500 duration-300 px-5 py-2.5 rounded-md text-whie md:w-auto w-full">
+          <button className="bg-[#ea9642] hover:bg-teal-500 duration-300 px-5 py-2.5 rounded-md text-whie md:w-auto w-full">
             Submit
           </button>
         </div>
       </div>
+
+      {/* for footer */}
       <div className="grid grid-cols-1 sm:gird-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-16 sm:text-center">
         <ul className="px-5 text-center sm:text-start flex sm:block flex-col items-center">
         <img
@@ -77,7 +79,7 @@ const Footer = () => {
         </ul>
 
         <ul className="text-center sm:text-start">
-          <h1 className="mb-1 font-semibold">Shop</h1>
+          <h1 className="mb-1 font-semibold">Shop our Best Sellers</h1>
           {footercompanyLinks.map((link,index) => (
             <li key={index}>
               <Link
