@@ -343,11 +343,11 @@ export const navItems = [
       image_Url: [
         {
           public_id: "test",
-          url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+          url: "https://m.media-amazon.com/images/I/61PclM9QqFL._AC_SL1019_.jpg",
         },
         {
           public_id: "test",
-          url: "https://www.istorebangladesh.com/images/thumbs/0000286_macbook-pro-m1_550.png",
+          url: "https://m.media-amazon.com/images/I/61PclM9QqFL._AC_SL1019_.jpg",
         },
       ],
       shop: {
