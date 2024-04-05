@@ -11,6 +11,7 @@ const Hero = () => {
         backgroundImage:
         `url(${farm})`,
         backgroundSize: 'cover',
+        zIndex: -1, // for fixing bugs and ensuring image doesnt imterup
       }}
     >
       <div className={`${styles.section} w-[90%] 800px:w-[60%]`}>

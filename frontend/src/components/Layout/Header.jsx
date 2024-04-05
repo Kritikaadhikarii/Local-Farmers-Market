@@ -28,9 +28,10 @@ const Header = ({activeHeading}) => {
     const term = e.target.value;
     setSearchTerm(term);
 
-    const filteredProducts = productData && productData.filter((product) => {
-      product.name.toLowerCase().includes(term.toLowerCase())
-    });
+    const filteredProducts = productData && productData.filter((product) =>
+    product.name.toLowerCase().includes(term.toLowerCase())
+    );
+
     setSearchData(filteredProducts);
   };
 
@@ -53,7 +54,7 @@ const Header = ({activeHeading}) => {
       items-center 
       justify-between"
         >
-          <div>
+        <div>
             <Link to="/">
               <img
                 src={logo}
@@ -64,7 +65,7 @@ const Header = ({activeHeading}) => {
           </div>
 
           {/* now for search box */}
-          <div className="w-[50%] relative">
+        <div className="w-[50%] relative">
             <input
               type="text"
               placeholder="Search Product..."
@@ -191,7 +192,8 @@ const Header = ({activeHeading}) => {
                 {isAuthenticated ? (
                   <Link to="/profile">
                     {/* changed */}
-                    <img src={`${backend_url}${user.avatar}`} className="w-[35px] h-[35px] rounded-full" alt="" />
+                    {/* <img src={`${backend_url}${user.avatar}`} className="w-[35px] h-[35px] rounded-full" alt="" /> */}
+                    
                   </Link>
                 ) : (
                   <Link to="/profile">
