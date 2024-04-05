@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styles from "../../styles/styles";
 import {
   AiOutlineSearch,
   AiOutlineHeart,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import styles from "../../styles/styles";
 import { categoriesData, productData } from "../../static/data";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
@@ -13,8 +13,11 @@ import logo from "../../images/logo.png";
 import DropDown from "./DropDown";
 import Navbar from "./Navbar";
 import { CgProfile } from "react-icons/cg";
+import { useSelector } from "react-redux";
+import { backend_url } from "../../server";
 
 const Header = (activeHeading) => {
+  const {isAuthenticated, user} = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
@@ -24,9 +27,9 @@ const Header = (activeHeading) => {
     const term = e.target.value;
     setSearchTerm(term);
 
-    const filteredProducts = productData.filter((product) =>
+    const filteredProducts = productData && productData.filter((product) => {
       product.name.toLowerCase().includes(term.toLowerCase())
-    );
+    });
     setSearchData(filteredProducts);
   };
 
@@ -184,9 +187,15 @@ const Header = (activeHeading) => {
             {/* for profile */}
             <div className={`${styles.noramlFlex}`}>
               <div className="relative cursor-pointer mr-[15px]">
-                <Link to="/login">
-                  <CgProfile size={30} color="rgb(255 255 255 / 83%)" />
-                </Link>
+                {isAuthenticated ? (
+                  <Link to="/profile">
+                    <img src={`${backend_url}${user.avatar}`} alt="" />
+                  </Link>
+                ) : (
+                  <Link to="/profile">
+                    <CgProfile size={30} color="rgb(255 255 255 / 83%)" />
+                  </Link>
+                )}
               </div>
             </div>
           </div>
