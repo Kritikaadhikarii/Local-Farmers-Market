@@ -8,6 +8,8 @@ import { server } from "../../server";
 import { toast } from "react-toastify";
 
 const Singup = () => {
+  const config = { headers : {"Content-Type" : "multipart/form-data"}};
+  const newForm = new FormData(); 
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -18,9 +20,9 @@ const Singup = () => {
     const reader = new FileReader();
 
     reader.onload = () => {
-      if (reader.readyState === 2) {
+      const file = e.target.files[0];
         setAvatar(reader.result);
-      }
+       
     };
 
     reader.readAsDataURL(e.target.files[0]);
@@ -30,7 +32,7 @@ const Singup = () => {
     e.preventDefault();
 
     axios
-      .post(`${server}/user/create-user`, { name, email, password, avatar })
+      .post(`${server}/user/create-user`, { newForm, config })
       .then((res) => {
         toast.success(res.data.message);
         setName("");
