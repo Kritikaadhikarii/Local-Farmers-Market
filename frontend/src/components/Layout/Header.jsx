@@ -170,6 +170,8 @@ const Header = ({activeHeading}) => {
                 <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
                 <span className="absolute right-0 top-0 rounded-full bg-[#e89d60] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
                   3
+                  {/* {wishlist && wishlist.length} */}
+
                 </span>
               </div>
             </div>
@@ -199,7 +201,8 @@ const Header = ({activeHeading}) => {
                     
                   </Link>
                 ) : (
-                  <Link to="/profile">
+                  // Arya <Link to="/profile">
+                  <Link to="/login">
                     <CgProfile size={30} color="rgb(255 255 255 / 83%)" />
                   </Link>
                 )}
@@ -208,10 +211,9 @@ const Header = ({activeHeading}) => {
 
 
                 {/* for cart popup */}
-                {openCart ? (
-                <Cart setOpenCart={setOpenCart} /> )
-                : null
-                }
+                {openCart ? 
+                (<Cart setOpenCart={setOpenCart} />)
+                 : null}
 
           </div>
         </div>
