@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import { backend_url } from "../../server";
 import Cart from "../cart/Cart";
 
+
 const Header = ({activeHeading}) => {
   const {isAuthenticated, user, loading} = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,6 +26,7 @@ const Header = ({activeHeading}) => {
   const [dropDown, setDropDown] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setopenWishlist] = useState(false);
+  const{cart} = useSelector((state)=> state.user);
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -186,7 +188,7 @@ const Header = ({activeHeading}) => {
                   color="rgb(255 255 255 / 83%)"
                 />
                 <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  6
+                  {cart && cart.length}
                 </span>
               </div>
             </div>

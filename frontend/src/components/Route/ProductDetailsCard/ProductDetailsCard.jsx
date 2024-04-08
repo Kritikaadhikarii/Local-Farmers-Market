@@ -8,17 +8,19 @@ import {
 import { RxCross1 } from "react-icons/rx";
 // import { Link } from "react-router-dom";
 import styles from "../../../styles/styles";
-// import { useDispatch, useSelector } from "react-redux";
-// import { toast } from "react-toastify";
-// import { addTocart } from "../../../redux/actions/cart";
+import { useSelector,useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { addTocart } from "../../../redux/actions/cart";
 // import {
 //   addToWishlist,
 //   removeFromWishlist,
 // } from "../../../redux/actions/wishlist";
 
 const ProductDetailsCard = ({ setOpen, data }) => {
-  const [count, setCount] = useState(1);
+  const{cart} =useSelector((state)=> state.cart);
+  const dispatch= useDispatch();        
   const [click, setClick] = useState(false);
+  const [count, setCount] = useState(1);
   // const [select, setSelect] = useState(false);
 
   // const { cart } = useSelector((state) => state.cart);
@@ -37,6 +39,20 @@ const ProductDetailsCard = ({ setOpen, data }) => {
     setCount(count + 1);
   };
 
+  const addToCartHandler=(id) => {
+    const isItemExists= cart && cart.find((i) => i._id === id);
+    if(isItemExists){
+      toast.error("Item already in cart!")
+    }else{
+      if(data.stock<count){
+        toast.error("Items already in the cart!")
+      }else{
+        const cartData ={...data,qty: count}
+      dispatch(addTocart(cartData));
+      toast.success("Items added to cart successfully!");
+      }
+    }
+  }
   return (
     <div className="bg-[#fff]">
       {data ? (
@@ -145,7 +161,9 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                 </div>
                 <div
                   className={`${styles.button} mt-6 rounded-[4px] h-11 flex items-center`}
-                >
+                  onClick={() => addToCartHandler(data._id)}
+                
+                  >
                   <span className="text-[#fff] flex items-center">
                     Add to cart <AiOutlineShoppingCart className="ml-1" />
                   </span>
