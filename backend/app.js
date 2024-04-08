@@ -2,25 +2,30 @@
 
 const express = require("express");
 const app = express();
-const ErrorHandler = require("./utils/ErrorHandler");
+// const ErrorHandler = require("./utils/ErrorHandler");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const ErrorHandler = require("./middleware/error");
 // const fileUpload = require("express-fileupload");
 
 
 // config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
-    // path: "backend/config/.env",
-    path: "config/.env",
+    path: "backend/config/.env",
     
   });
 }
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    origin: "mongodb+srv://kritika:farmersmarket@local-farmers-market.yyejabr.mongodb.net/test",
+    credentials: true,
+  })
+);
 app.use("/", express.static("uploads"));
 app.use(bodyParser.urlencoded({extended:true, limit: "50mb"}));
 
@@ -31,7 +36,7 @@ app.use(bodyParser.urlencoded({extended:true, limit: "50mb"}));
 // imports routes
 const user = require("./controller/user");
 
-app.use("api/v2/user", user);
+app.use("/api/v2/user", user);
 
 // its for Errohandling
 app.use(ErrorHandler);
