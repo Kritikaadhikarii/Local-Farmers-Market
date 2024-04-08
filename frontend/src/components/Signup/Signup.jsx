@@ -7,7 +7,7 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 
-const Singup = () => {
+const Signup = () => {
   const config = { headers: { "Content-Type": "multipart/form-data" } };
   const newForm = new FormData();
   const [email, setEmail] = useState("");
@@ -17,15 +17,42 @@ const Singup = () => {
   const [avatar, setAvatar] = useState(null);
 
   const handleFileInputChange = (e) => {
-    const reader = new FileReader();
+    const file = e.target.files[0];
+    setAvatar(file);
+    // const reader = new FileReader();
 
-    reader.onload = () => {
-      const file = e.target.files[0];
-      setAvatar(reader.result);
-    };
+    // reader.onload = () => {
+    //   const file = e.target.files[0];
+    //   setAvatar(reader.result);
+    // };
 
-    reader.readAsDataURL(e.target.files[0]);
+    // reader.readAsDataURL(e.target.files[0]);
   };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const config = { headers: { "Content-Type": "multipart/form-data" } };
+  //   const newForm = new FormData();
+  //   newForm.append("file", avatar);
+  //   newForm.append("name", name);
+  //   newForm.append("email", email);
+  //   newForm.append("password", password);
+
+  //   axios
+  //     .post(`${server}/user/create-user`, { newForm, config })
+  //     .then((res) => {
+  //       console.log(res.data.message);
+  //       toast.success(res.data.message);
+  //       setName("");
+  //       setEmail("");
+  //       setPassword("");
+  //       setAvatar();
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.response.data.message);
+  //       toast.error(error.response.data.message);
+  //     });
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,22 +62,13 @@ const Singup = () => {
     newForm.append("name", name);
     newForm.append("email", email);
     newForm.append("password", password);
-
-    
-
     axios
-      .post(`${server}/user/create-user`, { newForm, config })
+      .post(`${server}/user/create-user`, newForm, config)
       .then((res) => {
-        console.log(res.data.message);
-        toast.success(res.data.message);
-        setName("");
-        setEmail("");
-        setPassword("");
-        setAvatar();
+        console.log(res);
       })
-      .catch((error) => {
-        console.log(error.response.data.message);
-        toast.error(error.response.data.message);
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -192,4 +210,4 @@ const Singup = () => {
   );
 };
 
-export default Singup;
+export default Signup;
