@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LoginPage, SignupPage, ActivationPage, HomePage, ProductsPage, BestSellingPage, EventsPage, FAQPage } from "./Routes.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { loadUser } from "./redux/actions/user";
+import { loadUser, loadSeller } from "./redux/actions/user";
 import Store from "./redux/store";
 import ProductCard from "./components/Route/ProductCard/ProductCard";
 import { useSelector } from 'react-redux';
@@ -15,6 +15,7 @@ const App = () => {
 
   useEffect(() => {
     Store.dispatch(loadUser());
+    Store.dispatch(loadSeller());
   }, []);
   
   return (
@@ -36,6 +37,10 @@ const App = () => {
             <Route path="/best-selling" element={<BestSellingPage  />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/faq" element={<FAQPage />} />
+
+            {/* Routes for shop related actions */}
+            <Route path="/shop-create" element={<ShopCreatePage />} />
+            <Route path="/shop-login" element={<ShopLoginPage />} />
           </Routes>
     
           {/* // uusing it for notifications */}
