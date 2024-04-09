@@ -20,12 +20,13 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "mongodb+srv://kritika:farmersmarket@local-farmers-market.yyejabr.mongodb.net/test",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "mongodb+srv://kritika:farmersmarket@local-farmers-market.yyejabr.mongodb.net/test",
+//     credentials: true,
+//   })
+// );
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use("/", express.static("uploads"));
 app.use(bodyParser.urlencoded({extended:true, limit: "50mb"}));
 
@@ -37,7 +38,7 @@ app.use(bodyParser.urlencoded({extended:true, limit: "50mb"}));
 const user = require("./controller/user");
 
 app.use("/api/v2/user", user);
-
+ 
 // its for Errohandling
 app.use(ErrorHandler);
 
