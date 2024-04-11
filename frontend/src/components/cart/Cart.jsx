@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {backend_url} from "../../server"
-import {addTocart, removeFromCart} from "../../redux/actions/cart";
+import {addTocart, removeFromCart} from "../../redux/reducers/cart";
 
   const Cart = ({ setOpenCart }) => {
   const { cart } = useSelector((state) => state.cart);

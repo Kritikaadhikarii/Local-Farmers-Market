@@ -10,7 +10,7 @@ import { RxCross1 } from "react-icons/rx";
 import styles from "../../../styles/styles";
 import { useSelector,useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { addTocart } from "../../../redux/actions/cart";
+// import { addTocart } from "../../../redux/reducers/cart";
 // import {
 //   addToWishlist,
 //   removeFromWishlist,
