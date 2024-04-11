@@ -7,17 +7,6 @@ import {
 } from "react-icons/ai";
 import { RxCross1 } from "react-icons/rx";
 import styles from "../../../styles/styles";
-<<<<<<< HEAD
-import { useSelector,useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-// import { addTocart } from "../../../redux/reducers/cart";
-// import {
-//   addToWishlist,
-//   removeFromWishlist,
-// } from "../../../redux/actions/wishlist";
-=======
-
->>>>>>> 232bc8dd35984313d437b6eb306d0cf9b5e7b5dc
 
 const ProductDetailsCard = ({ setOpen, data }) => {
   const [count, setCount] = useState(1);

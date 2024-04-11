@@ -4,30 +4,6 @@ import { IoBagHandleOutline } from "react-icons/io5";
 import { HiOutlineMinus, HiPlus } from "react-icons/hi";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import {backend_url} from "../../server"
-import {addTocart, removeFromCart} from "../../redux/reducers/cart";
-
-  const Cart = ({ setOpenCart }) => {
-  const { cart } = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
-
-  const removeFromCartHandler = (data) => {
-    dispatch(removeFromCart(data));
-  };
-
-  const totalPrice = cart.reduce(
-    (acc, item) => acc + item.qty * item.discountPrice,
-    0
-  );
-
-  const quantityChangeHandler = (data) => {
-    dispatch(addTocart(data));
-  };
-=======
->>>>>>> 232bc8dd35984313d437b6eb306d0cf9b5e7b5dc
 
 const Cart = ({ setOpenCart }) => {
   const cartData = [
