@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  // Navigate,
+  // useNavigation,
+} from "react-router-dom";
 import {
   LoginPage,
   SignupPage,
@@ -21,32 +27,35 @@ import {
 } from "./Routes.js";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { loadUser, loadSeller } from "./redux/actions/user";
 import Store from "./redux/store";
-import ProductCard from "./components/Route/ProductCard/ProductCard";
-import { useSelector } from 'react-redux';
+import { loadSeller, loadUser } from "./redux/actions/user";
+import { useSelector } from "react-redux";
 import ProtectedRoute from "./ProtectedRoute";
 import { ShopHomePage } from "./ShopRoutes";
 import SellerProtectedRoute from "./SellerProtectedRoute";
 
+
 const App = () => {
   const { loading, isAuthenticated } = useSelector((state) => state.user);
   const { isLoading, isSeller } = useSelector((state) => state.seller);
+
+
   useEffect(() => {
     Store.dispatch(loadUser());
     Store.dispatch(loadSeller());
   }, []);
-  
+
+
   return (
     <>
-    {loading || isLoading ? null : (
+      {loading || isLoading ? null : (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/sign-up" element={<SignupPage />} />
             <Route
-              path="/activation/:activation:token"
+              path="/activation/:activation_token"
               element={<ActivationPage />}
             />
             <Route
@@ -55,10 +64,9 @@ const App = () => {
             />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:name" element={<ProductDetailsPage />} />
-            <Route path="/best-selling" element={<BestSellingPage  />} />
+            <Route path="/best-selling" element={<BestSellingPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/faq" element={<FAQPage />} />
-
             <Route
               path="/checkout"
               element={
@@ -89,8 +97,6 @@ const App = () => {
               }
             />
           </Routes>
-    
-          {/* // uusing it for notifications */}
           <ToastContainer
             position="bottom-center"
             autoClose={5000}
@@ -104,11 +110,15 @@ const App = () => {
             theme="dark"
           />
         </BrowserRouter>
-      )
-    }
+      )}
     </>
-
   );
 };
 
+
 export default App;
+
+
+
+
+
