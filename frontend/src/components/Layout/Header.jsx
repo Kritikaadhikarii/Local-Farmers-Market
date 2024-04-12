@@ -14,27 +14,27 @@ import DropDown from "./DropDown";
 import Navbar from "./Navbar";
 import { CgProfile } from "react-icons/cg";
 import { useSelector } from "react-redux";
-import { backend_url } from "../../server";
 import Cart from "../cart/Cart";
+import Wishlist from "../Wishlist/wishlist";
 
-
-const Header = ({activeHeading}) => {
-  const {isAuthenticated, user, loading} = useSelector((state) => state.user);
+const Header = ({ activeHeading }) => {
+  const { isAuthenticated } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const [openCart, setOpenCart] = useState(false);
-  const [openWishlist, setopenWishlist] = useState(false);
-  const{cart} = useSelector((state)=> state.user);
+  const [openWishlist, setOpenWishlist] = useState(false);
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
 
-    const filteredProducts = productData && productData.filter((product) =>
-    product.name.toLowerCase().includes(term.toLowerCase())
-    );
+    const filteredProducts =
+      productData &&
+      productData.filter((product) =>
+        product.name.toLowerCase().includes(term.toLowerCase())
+      );
 
     setSearchData(filteredProducts);
   };
@@ -58,7 +58,7 @@ const Header = ({activeHeading}) => {
       items-center 
       justify-between"
         >
-        <div>
+          <div>
             <Link to="/">
               <img
                 src={logo}
@@ -69,7 +69,7 @@ const Header = ({activeHeading}) => {
           </div>
 
           {/* now for search box */}
-        <div className="w-[50%] relative">
+          <div className="w-[50%] relative">
             <input
               type="text"
               placeholder="Search Product..."
@@ -104,7 +104,7 @@ const Header = ({activeHeading}) => {
                         <div className="w-full flex items-start-py-3">
                           <img
                             src={i.image_Url[0].url}
-                            alt="image"
+                            alt=""
                             className="w-[40px] h-[40px] mr-[10px]"
                           />
                           <h1>{i.name}</h1>
@@ -132,9 +132,9 @@ const Header = ({activeHeading}) => {
 
       {/* categories */}
       <div
-        className={`${ 
+        className={`${
           active === true ? "shadow-sm top-0 left-0 z-10" : null
-        } transition hidden 800px:flex items-center justify-between w-full bg-[#85B27D] h-[70px]`}
+        } transition hidden 800px:flex items-center justify-between w-full bg-[#85B27D] h-[70px] rounded-full`}
       >
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
@@ -168,12 +168,13 @@ const Header = ({activeHeading}) => {
           {/* for heart */}
           <div className="flex">
             <div className={`${styles.noramlFlex}`}>
-              <div className="relative cursor-pointer mr-[15px]">
+              <div
+                className="relative cursor-pointer mr-[15px]"
+                onClick={() => setOpenWishlist(true)}
+              >
                 <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
                 <span className="absolute right-0 top-0 rounded-full bg-[#e89d60] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  3
                   {/* {wishlist && wishlist.length} */}
-
                 </span>
               </div>
             </div>
@@ -181,14 +182,16 @@ const Header = ({activeHeading}) => {
             {/* for cart */}
 
             <div className={`${styles.noramlFlex}`}>
-              <div className="relative cursor-pointer mr-[15px]"
-              onClick={() => setOpenCart(true)}>
+              <div
+                className="relative cursor-pointer mr-[15px]"
+                onClick={() => setOpenCart(true)}
+              >
                 <AiOutlineShoppingCart
                   size={30}
                   color="rgb(255 255 255 / 83%)"
                 />
                 <span className="absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  {cart && cart.length}
+                  6
                 </span>
               </div>
             </div>
@@ -200,7 +203,6 @@ const Header = ({activeHeading}) => {
                   <Link to="/profile">
                     {/* changed */}
                     {/* <img src={`${backend_url}${user.avatar}`} className="w-[35px] h-[35px] rounded-full" alt="" /> */}
-                    
                   </Link>
                 ) : (
                   // Arya <Link to="/profile">
@@ -211,12 +213,13 @@ const Header = ({activeHeading}) => {
               </div>
             </div>
 
+            {/* Wishlist popup */}
 
-                {/* for cart popup */}
-                {openCart ? 
-                (<Cart setOpenCart={setOpenCart} />)
-                 : null}
-
+            <>
+            {openWishlist && <Wishlist setOpenWishlist={setOpenWishlist} />}
+              {/* for cart popup */}
+              {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
+            </>
           </div>
         </div>
       </div>
