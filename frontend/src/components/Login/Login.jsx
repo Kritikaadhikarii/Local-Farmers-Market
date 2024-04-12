@@ -3,7 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { server } from "../../server";
 
 const Login = () => {
@@ -127,7 +127,7 @@ const Login = () => {
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
               <h4>Don't have an account yet?</h4>
-              <Link to="/signup" className="text-blue-600 pl-2">
+              <Link to="/Signup" className="text-blue-600 pl-2">
                 Sign Up
               </Link>
             </div>

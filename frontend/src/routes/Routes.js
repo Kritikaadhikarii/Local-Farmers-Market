@@ -15,21 +15,21 @@ import ShopCreatePage from "../pages/ShopCreate";
 import SellerActivationPage from "../pages/SellerActivationPage";
 import ShopLoginPage from "../pages/ShopLoginPage";
 
-export { 
-    LoginPage,
-    SignupPage,
-    ActivationPage,
-    HomePage,
-    ProductsPage,
-    BestSellingPage,
-    EventsPage,
-    FAQPage,
-    CheckoutPage,
-    PaymentPage,
-    OrderSuccessPage,
-    ProductDetailsPage,
-    ProfilePage,
-    ShopCreatePage,
-    SellerActivationPage,
-    ShopLoginPage
+export {
+  LoginPage,
+  SignupPage,
+  ActivationPage,
+  HomePage,
+  ProductsPage,
+  BestSellingPage,
+  EventsPage,
+  FAQPage,
+  CheckoutPage,
+  PaymentPage,
+  OrderSuccessPage,
+  ProductDetailsPage,
+  ProfilePage,
+  ShopCreatePage,
+  SellerActivationPage,
+  ShopLoginPage,
 };
