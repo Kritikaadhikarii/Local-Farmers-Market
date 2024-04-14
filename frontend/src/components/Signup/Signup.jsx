@@ -32,6 +32,7 @@ const Signup = () => {
   
     try {
       const res = await axios.post(`${server}/user/create-user`, newForm, config);
+      console.log(res,"res")
       if (res && res.data) {
         toast.success(res.data.message);
         setName("");
@@ -109,7 +110,7 @@ const Signup = () => {
               </label>
               <div className="mt-1 relative">
                 <input
-                  type={visible ? "text" : "password"}
+                  type="password"
                   name="password"
                   autoComplete="current-password"
                   required
