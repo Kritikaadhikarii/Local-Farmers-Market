@@ -27,7 +27,6 @@ import {
   ShopAllEvents,
   ShopAllCoupouns,
   ShopPreviewPage,
-  ShopeHomePage
 } from "./routes/ShopRoutes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -71,21 +70,29 @@ const App = () => {
         <Route
           path="/checkout"
           element={
+              <CheckoutPage />
+          }
+        />
+        {/* <Route
+          path="/checkout"
+          element={
             <ProtectedRoute>
               <CheckoutPage />
             </ProtectedRoute>
           }
-        />
+        /> */}
+        
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/order/success/:id" element={<OrderSuccessPage />} />
-        <Route
+        <Route path="/profile" element={<ProfilePage />} />
+        {/* <Route
           path="/profile"
           element={
             <ProtectedRoute>
               <ProfilePage />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
         {/* shop Routes */}
         <Route path="/shop-create" element={<ShopCreatePage />} />
@@ -101,11 +108,18 @@ const App = () => {
         <Route
           path="/dashboard"
           element={
+              <ShopDashboardPage />
+          }
+        />
+
+        {/* <Route
+          path="/dashboard"
+          element={
             <SellerProtectedRoute>
               <ShopDashboardPage />
             </SellerProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/dashboard-create-product"
           element={
