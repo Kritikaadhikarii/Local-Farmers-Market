@@ -450,12 +450,12 @@ const PaymentMethod = () => {
             alt=""
           />
           <h5 className="pl-5 font-[600] text-[12px] 800px:text-[unset]">
-            Shahriar Sajeeb
+            Kritika
           </h5>
         </div>
         <div className="pl-8 flex items-center">
           <h6 className="text-[12px] 800px:text-[unset]">1234 **** *** ****</h6>
-          <h5 className="pl-6 text-[12px] 800px:text-[unset]">08/2022</h5>
+          <h5 className="pl-6 text-[12px] 800px:text-[unset]">08/2028</h5>
         </div>
         <div className="min-w-[10%] flex items-center justify-between pl-8">
           <AiOutlineDelete size={25} className="cursor-pointer" />
