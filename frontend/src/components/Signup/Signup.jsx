@@ -45,6 +45,7 @@ const Signup = () => {
         toast.error(error.response.data.message);
       } else {
         console.error("An unexpected error occurred:", error);
+        console.log(error);
         toast.error("An unexpected error occurred");
       }
     }

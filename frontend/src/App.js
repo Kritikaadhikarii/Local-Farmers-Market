@@ -67,12 +67,8 @@ const App = () => {
         <Route path="/best-selling" element={<BestSellingPage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/faq" element={<FAQPage />} />
-        <Route
-          path="/checkout"
-          element={
-              <CheckoutPage />
-          }
-        />
+
+        <Route path="/checkout" element={<CheckoutPage />} />
         {/* <Route
           path="/checkout"
           element={
@@ -84,6 +80,7 @@ const App = () => {
         
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/order/success/:id" element={<OrderSuccessPage />} />
+        
         <Route path="/profile" element={<ProfilePage />} />
         {/* <Route
           path="/profile"
@@ -93,6 +90,7 @@ const App = () => {
             </ProtectedRoute>
           }
         /> */}
+
         <Route path="/shop/preview/:id" element={<ShopPreviewPage />} />
         {/* shop Routes */}
         <Route path="/shop-create" element={<ShopCreatePage />} />
@@ -105,13 +103,7 @@ const App = () => {
             </SellerProtectedRoute>
           }
         />
-        <Route
-          path="/dashboard"
-          element={
-              <ShopDashboardPage />
-          }
-        />
-
+        <Route path="/dashboard" element={ <ShopDashboardPage /> }/>
         {/* <Route
           path="/dashboard"
           element={
@@ -120,6 +112,8 @@ const App = () => {
             </SellerProtectedRoute>
           }
         /> */}
+
+
         <Route
           path="/dashboard-create-product"
           element={
