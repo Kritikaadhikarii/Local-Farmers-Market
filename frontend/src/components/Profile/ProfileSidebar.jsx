@@ -4,8 +4,9 @@ import {
   AiOutlineLogin,
   AiOutlineMessage,
 } from "react-icons/ai";
+import {RiLockPasswordLine} from "react-icons/ri";
 import { HiOutlineReceiptRefund, HiOutlineShoppingBag } from "react-icons/hi";
-import { MdOutlineTrackChanges } from "react-icons/md";
+import { MdOutlinePassword, MdOutlineTrackChanges } from "react-icons/md";
 import { TbAddressBook } from "react-icons/tb";
 import { RxPerson } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
