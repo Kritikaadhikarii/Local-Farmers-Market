@@ -58,6 +58,7 @@ const Header = ({ activeHeading }) => {
       items-center 
       justify-between"
         >
+          {/* portion for logo */}
           <div>
             <Link to="/">
               <img
@@ -116,7 +117,7 @@ const Header = ({ activeHeading }) => {
             ) : null}
           </div>
 
-          {/* new */}
+          {/* become seller button */}
           <div className={`${styles.button}`}>
             <Link to="/seller">
               <h1
@@ -130,11 +131,12 @@ const Header = ({ activeHeading }) => {
         </div>
       </div>
 
-      {/* categories */}
+      {/* categories bar */}
       <div
         className={`${
           active === true ? "shadow-sm top-0 left-0 z-10" : null
         } transition hidden 800px:flex items-center justify-between w-full bg-[#85B27D] h-[70px]`}
+        onClick={() => setDropDown(!dropDown)}
       >
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
@@ -149,7 +151,7 @@ const Header = ({ activeHeading }) => {
             <IoIosArrowDown
               size={20}
               className="absolute right-2 top-4 cursor-pointer"
-              onClick={() => setDropDown(!dropDown)}
+              // onClick={() => setDropDown(!dropDown)}
             />
             {dropDown ? (
               <DropDown
