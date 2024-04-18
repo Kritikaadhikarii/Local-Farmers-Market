@@ -26,6 +26,7 @@ const Header = ({ activeHeading }) => {
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
 
+
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
@@ -38,6 +39,8 @@ const Header = ({ activeHeading }) => {
 
     setSearchData(filteredProducts);
   };
+
+  
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 70) {
@@ -131,7 +134,7 @@ const Header = ({ activeHeading }) => {
         </div>
       </div>
 
-      {/* categories bar */}
+      {/* categories bar dropdown */}
       <div
         className={`${
           active === true ? "shadow-sm top-0 left-0 z-10" : null
