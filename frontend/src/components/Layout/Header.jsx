@@ -40,7 +40,7 @@ const Header = ({ activeHeading }) => {
     setSearchData(filteredProducts);
   };
 
-  
+
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 70) {
@@ -84,21 +84,11 @@ const Header = ({ activeHeading }) => {
 
             <AiOutlineSearch
               size={30}
-              className="absolute 
-            right-2 
-            top-1.5 
-            cursor-pointer"
+              className="absolute right-2 top-1.5 cursor-pointer"
               color="#85B27D"
             />
             {searchData && searchData.length !== 0 ? (
-              <div
-                className="absolute 
-                min-h-[30vh]
-                bg-slate-50
-                shadow-sm-2
-                z[9]
-                p-4"
-              >
+              <div className="absolute top-[45px] left-0 bg-slate-50 shadow-sm z-[99999] p-4">
                 {searchData &&
                   searchData.map((i, index) => {
                     const d = i.name;
@@ -157,7 +147,7 @@ const Header = ({ activeHeading }) => {
             <IoIosArrowDown
               size={20}
               className="absolute right-2 top-4 cursor-pointer"
-              // onClick={() => setDropDown(!dropDown)}
+            // onClick={() => setDropDown(!dropDown)}
             />
             {dropDown ? (
               <DropDown
@@ -225,7 +215,7 @@ const Header = ({ activeHeading }) => {
             {/* Wishlist popup */}
 
             <>
-            {openWishlist && <Wishlist setOpenWishlist={setOpenWishlist} />}
+              {openWishlist && <Wishlist setOpenWishlist={setOpenWishlist} />}
               {/* for cart popup */}
               {openCart ? <Cart setOpenCart={setOpenCart} /> : null}
             </>
