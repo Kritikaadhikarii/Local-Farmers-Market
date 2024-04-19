@@ -16,9 +16,11 @@ import { CgProfile } from "react-icons/cg";
 import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
 import Wishlist from "../Wishlist/wishlist";
+import { backend_url } from "../../server";
 
 const Header = ({ activeHeading }) => {
-  const { isAuthenticated } = useSelector((state) => state.user);
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  // const { isAuthenticated } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
@@ -200,11 +202,14 @@ const Header = ({ activeHeading }) => {
               <div className="relative cursor-pointer mr-[15px]">
                 {isAuthenticated ? (
                   <Link to="/profile">
-                    {/* changed */}
-                    {/* <img src={`${backend_url}${user.avatar}`} className="w-[35px] h-[35px] rounded-full" alt="" /> */}
+                    <img
+                        src={`${backend_url}${user.avatar}`}
+                        alt=""
+                        className="w-[50px] h-[50px] rounded-full border-[3px] border-[#ead453]"
+                      />
                   </Link>
                 ) : (
-                  // Arya <Link to="/profile">
+                  // <Link to="/profile">
                   <Link to="/login">
                     <CgProfile size={30} color="rgb(255 255 255 / 83%)" />
                   </Link>
