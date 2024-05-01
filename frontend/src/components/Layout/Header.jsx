@@ -19,8 +19,8 @@ import Wishlist from "../Wishlist/wishlist";
 import { backend_url } from "../../server";
 
 const Header = ({ activeHeading }) => {
+  // state variables
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  // const { isAuthenticated } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
@@ -28,7 +28,7 @@ const Header = ({ activeHeading }) => {
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
 
-
+  // function for handling search input changes
   const handleSearchChange = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
@@ -43,7 +43,7 @@ const Header = ({ activeHeading }) => {
   };
 
 
-
+  // event listener for scroll event to toggle active state
   window.addEventListener("scroll", () => {
     if (window.scrollY > 70) {
       setActive(true);

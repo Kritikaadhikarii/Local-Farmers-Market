@@ -11,12 +11,14 @@ const sendMail = require("../utils/sendMail");
 const sendToken = require("../utils/jwtToken");
 const { isAuthenticated } = require("../middleware/auth");
 
+// Route for creating a new user
 router.post("/create-user", upload.single("file"), async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
     const userEmail = await User.findOne({ email });
 
     if (userEmail) {
+      // If user already exists, delete uploaded file and return an error
       const filename = req.file.filename;
       const filePath = `uploads/${filename}`;
       fs.unlink(filePath, (err) => {
@@ -28,6 +30,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       return next(new ErrorHandler("User already exists", 400));
     }
 
+    // Saving user data including avatar image URL
     const filename = req.file.filename;
     const fileUrl = path.join(filename);
 
@@ -38,6 +41,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       avatar: fileUrl,
     };
 
+    // Creating activation token and sending activation email
     const activationToken = createActivationToken(user);
 
     const activationUrl = `http://localhost:3000/activation/${activationToken}`;
@@ -46,7 +50,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
       await sendMail({
         email: user.email,
         subject: "Activate your account",
-        message: `Hello ${user.name}, please click on the link to activate your account: ${activationUrl}`,
+        message: `Hello ${user.name}, <br>Please click on the link to activate your account: <br> ${activationUrl}`,
       });
       res.status(201).json({
         success: true,
@@ -60,14 +64,15 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
   }
 });
 
-// create activation token
+// function for creating activation token
 const createActivationToken = (user) => {
   return jwt.sign(user, process.env.ACTIVATION_SECRET, {
+    // the token will expire in 5 minutes
     expiresIn: "5m",
   });
 };
 
-// activate user
+// route to activate user account
 router.post(
   "/activation",
   catchAsyncErrors(async (req, res, next) => {
@@ -96,6 +101,7 @@ router.post(
         password,
       });
 
+      // sending JWT token
       sendToken(user, 201, res);
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
@@ -103,7 +109,7 @@ router.post(
   })
 );
 
-// login user
+// route to login user
 router.post(
   "/login-user",
   catchAsyncErrors(async (req, res, next) => {
