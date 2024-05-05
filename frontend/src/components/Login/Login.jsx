@@ -21,8 +21,9 @@ const Login = () => {
         {
           email,
           password,
-        },
-        { withCredentials: true })
+        }, 
+        { withCredentials: true }
+      )
       .then((res) => {
         toast.success("Login Success!");
         navigate("/");
@@ -31,7 +32,7 @@ const Login = () => {
       .catch((err) => {
         toast.error(err.response.data.message);
       });
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -45,7 +46,10 @@ const Login = () => {
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email address
               </label>
 

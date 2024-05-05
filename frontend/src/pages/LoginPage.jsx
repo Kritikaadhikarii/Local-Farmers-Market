@@ -11,6 +11,7 @@ const LoginPage = () => {
     // in case if user is already logged in
     if (isAuthenticated === true ){
 
+      // thiss will naviagate to root url
       navigate("/");
     }
   }, [])

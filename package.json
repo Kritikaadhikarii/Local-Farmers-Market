@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/Kritikaadhikarii/Local-Farmers-Market#readme",
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.3.0",
+    "@stripe/react-stripe-js": "^2.7.0",
+    "@stripe/stripe-js": "^3.3.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",

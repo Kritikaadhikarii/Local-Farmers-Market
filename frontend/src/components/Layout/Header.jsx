@@ -42,7 +42,6 @@ const Header = ({ activeHeading }) => {
     setSearchData(filteredProducts);
   };
 
-
   // event listener for scroll event to toggle active state
   window.addEventListener("scroll", () => {
     if (window.scrollY > 70) {
@@ -114,7 +113,7 @@ const Header = ({ activeHeading }) => {
 
           {/* become seller button */}
           <div className={`${styles.button}`}>
-            <Link to="/seller">
+            <Link to="/shop-create">
               <h1
                 className="text-[#fff]
             flex items-center"
@@ -135,21 +134,21 @@ const Header = ({ activeHeading }) => {
       >
         <div
           className={`${styles.section} relative ${styles.noramlFlex} justify-between`}
-          
         >
-          <div className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block"
-           onClick={() => setDropDown(!dropDown)}>
+          <div
+            className="relative h-[60px] mt-[10px] w-[270px] hidden 1000px:block"
+            onClick={() => setDropDown(!dropDown)}
+          >
             <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
             <button
               className={`h-[100%] w-full flex justify-between items-center pl-10 bg-white font-sans text-lg font-[500] select-none rounded-t-md`}
-             
             >
               All Categories
             </button>
             <IoIosArrowDown
               size={20}
               className="absolute right-2 top-4 cursor-pointer"
-            // onClick={() => setDropDown(!dropDown)}
+              // onClick={() => setDropDown(!dropDown)}
             />
             {dropDown ? (
               <DropDown
@@ -174,8 +173,7 @@ const Header = ({ activeHeading }) => {
               >
                 <AiOutlineHeart size={30} color="rgb(255 255 255 / 83%)" />
                 <span className="absolute right-0 top-0 rounded-full bg-[#e89d60] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center">
-                  {/* {wishlist && wishlist.length} */}
-                  3
+                  {/* {wishlist && wishlist.length} */}3
                 </span>
               </div>
             </div>
@@ -203,10 +201,10 @@ const Header = ({ activeHeading }) => {
                 {isAuthenticated ? (
                   <Link to="/profile">
                     <img
-                        src={`${backend_url}${user.avatar}`}
-                        alt=""
-                        className="w-[50px] h-[50px] rounded-full border-[3px] border-[#ead453]"
-                      />
+                      src={`${backend_url}${user.avatar}`}
+                      alt=""
+                      className="w-[50px] h-[50px] rounded-full border-[3px] border-[#ead453]"
+                    />
                   </Link>
                 ) : (
                   // <Link to="/profile">
