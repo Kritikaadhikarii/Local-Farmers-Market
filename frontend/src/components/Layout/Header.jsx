@@ -20,13 +20,26 @@ import { backend_url } from "../../server";
 
 const Header = ({ activeHeading }) => {
   // state variables
+  // const { isAuthenticated, user } = useSelector((state) => state.user);
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [searchData, setSearchData] = useState(null);
+  // const [active, setActive] = useState(false);
+  // const [dropDown, setDropDown] = useState(false);
+  // const [openCart, setOpenCart] = useState(false);
+  // const [openWishlist, setOpenWishlist] = useState(false);
+
   const { isAuthenticated, user } = useSelector((state) => state.user);
+  // const { isSeller } = useSelector((state) => state.seller);
+  // const { wishlist } = useSelector((state) => state.wishlist);
+  // const { cart } = useSelector((state) => state.cart);
+  // const { allProducts } = useSelector((state) => state.products);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   // function for handling search input changes
   const handleSearchChange = (e) => {
