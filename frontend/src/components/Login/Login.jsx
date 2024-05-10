@@ -3,8 +3,8 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/styles";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { toast } from "react-toastify";
 import { server } from "../../server";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,16 +22,17 @@ const Login = () => {
           email,
           password,
         },
-        { withCredentials: true })
+        { withCredentials: true }
+      )
       .then((res) => {
         toast.success("Login Success!");
         navigate("/");
-        window.location.reload(true);
+        window.location.reload(true); 
       })
       .catch((err) => {
         toast.error(err.response.data.message);
       });
-  }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -40,15 +41,16 @@ const Login = () => {
           Login to your account
         </h2>
       </div>
-
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Email address
               </label>
-
               <div className="mt-1">
                 <input
                   type="email"
@@ -93,30 +95,6 @@ const Login = () => {
                 )}
               </div>
             </div>
-            <div className={`${styles.noramlFlex} justify-between`}>
-              <div className={`${styles.noramlFlex}`}>
-                <input
-                  type="checkbox"
-                  name="remember-me"
-                  id="remember-me"
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
-                >
-                  Remember me
-                </label>
-              </div>
-              <div className="text-sm">
-                <a
-                  href=".forgot-password"
-                  className="font-medium text-blue-600 hover:text-blue-500"
-                >
-                  Forgot your password?
-                </a>
-              </div>
-            </div>
             <div>
               <button
                 type="submit"
@@ -126,8 +104,8 @@ const Login = () => {
               </button>
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
-              <h4>Don't have an account yet?</h4>
-              <Link to="/Signup" className="text-blue-600 pl-2">
+              <h4>Not have any account?</h4>
+              <Link to="/sign-up" className="text-blue-600 pl-2">
                 Sign Up
               </Link>
             </div>

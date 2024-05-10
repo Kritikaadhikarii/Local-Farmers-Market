@@ -9,22 +9,27 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  // for state management
+  // declaring state varibales using useState hook
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
+
+  // navigation hook from react-router-dom
   const navigate = useNavigate();
 
+  // function for handling file input changes or new inputs from the user
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     setAvatar(file);
   };
 
+  // for handling form submissison
   const handleSubmit = async (e) => {
     e.preventDefault();
     const config = { headers: { "Content-Type": "multipart/form-data" } };
-
     const newForm = new FormData();
 
     newForm.append("file", avatar);
@@ -37,19 +42,22 @@ const Signup = () => {
       console.log(res, "res")
       if (res && res.data) {
         toast.success(res.data.message);
+        // for clearing form fields and avatar section after
         setName("");
         setEmail("");
         setPassword("");
         setAvatar(null);
+
+        //redirecting user to the login page
         navigate("/login");
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
+        // Displaying error message using toast
         toast.error(error.response.data.message);
       } else {
         console.error("An unexpected error occurred:", error);
-        console.log(error);
-        console.log(error);
+        // Logging unexpected errors
         toast.error("An unexpected error occurred");
       }
     }

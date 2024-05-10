@@ -40,12 +40,36 @@ const shopSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  withdrawMethod: {
+    type: Object,
+  },
+  availableBalance: {
+    type: Number,
+    default: 0,
+  },
+  transactions: [
+    {
+      amount: {
+        type: Number,
+        required: true,
+      },
+      status: {
+        type: String,
+        default: "Processing",
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
+      updatedAt: {
+        type: Date,
+      },
+    }
+  ],
   createdAt: {
     type: Date,
-    default: Date.now(),
-  },
-  resetPasswordToken: String,
-  resetPasswordTime: Date,
+    default: Date.now,
+  }
 });
 
 // Hash password
@@ -54,6 +78,7 @@ shopSchema.pre("save", async function (next) {
     next();
   }
   this.password = await bcrypt.hash(this.password, 10);
+  next();
 });
 
 // jwt token
@@ -63,7 +88,7 @@ shopSchema.methods.getJwtToken = function () {
   });
 };
 
-// comapre password
+// Compare password
 shopSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };

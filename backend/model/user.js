@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -18,9 +17,31 @@ const userSchema = new mongoose.Schema({
     minLength: [4, "Password should be greater than 4 characters"],
     select: false,
   },
-  address: {
-    type: String,
+  phoneNumber: {
+    type: Number,
   },
+  addresses: [
+    {
+      country: {
+        type: String,
+      },
+      city: {
+        type: String,
+      },
+      address1: {
+        type: String,
+      },
+      address2: {
+        type: String,
+      },
+      zipCode: {
+        type: Number,
+      },
+      addressType: {
+        type: String,
+      },
+    }
+  ],
   role: {
     type: String,
     default: "user",
@@ -31,29 +52,27 @@ const userSchema = new mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
-  },
-  resetPasswordToken: String,
-  resetPasswordTime: Date,
+    default: Date.now,
+  }
 });
 
-//  Hash password
+// Hash password before saving user model
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
-    next();
+    return next();
   }
-
   this.password = await bcrypt.hash(this.password, 10);
+  next();
 });
 
-// jwt token
+// Generate JWT token for authentication
 userSchema.methods.getJwtToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
     expiresIn: process.env.JWT_EXPIRES,
   });
 };
 
-// compare password
+// Compare entered password with the hashed password in the database
 userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };

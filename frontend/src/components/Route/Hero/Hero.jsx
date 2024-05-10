@@ -8,9 +8,8 @@ const Hero = () => {
     <div
       className={`relative min-h-[60vh] 800px:min-h-[80vh] w-full bg-no-repeat ${styles.noramlFlex}`}
       style={{
-        backgroundImage:
-        `url(${farm})`,
-        backgroundSize: 'cover',
+        backgroundImage: `url(${farm})`,
+        backgroundSize: "cover",
         zIndex: -1, // for fixing bugs and ensuring image doesnt imterup
       }}
     >
@@ -27,11 +26,11 @@ const Hero = () => {
           <br /> aliquam deserunt officia. Dolorum saepe nulla provident.
         </p>
         <Link to="/products" className="inline-block">
-            <div className={`${styles.button} mt-5`}>
-                 <span className="text-[#fff] font-[Poppins] text-[18px]">
-                    Shop Now
-                 </span>
-            </div>
+          <div className={`${styles.button} mt-5`}>
+            <span className="text-[#fff] font-[Poppins] text-[18px]">
+              Shop Now
+            </span>
+          </div>
         </Link>
       </div>
     </div>
