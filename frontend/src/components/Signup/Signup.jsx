@@ -6,30 +6,23 @@ import { RxAvatar } from "react-icons/rx";
 import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
-  // for state management
-  // declaring state varibales using useState hook
+const Singup = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const [avatar, setAvatar] = useState(null);
 
-  // navigation hook from react-router-dom
-  const navigate = useNavigate();
-
-  // function for handling file input changes or new inputs from the user
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     setAvatar(file);
   };
 
-  // for handling form submissison
   const handleSubmit = async (e) => {
     e.preventDefault();
     const config = { headers: { "Content-Type": "multipart/form-data" } };
+
     const newForm = new FormData();
 
     newForm.append("file", avatar);
@@ -37,32 +30,19 @@ const Signup = () => {
     newForm.append("email", email);
     newForm.append("password", password);
 
-    try {
-      const res = await axios.post(`${server}/user/create-user`, newForm, config);
-      console.log(res, "res")
-      if (res && res.data) {
+    axios
+      .post(`${server}/user/create-user`, newForm, config)
+      .then((res) => {
         toast.success(res.data.message);
-        // for clearing form fields and avatar section after
         setName("");
         setEmail("");
         setPassword("");
-        setAvatar(null);
-
-        //redirecting user to the login page
-        navigate("/login");
-      }
-    } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        // Displaying error message using toast
+        setAvatar();
+      })
+      .catch((error) => {
         toast.error(error.response.data.message);
-      } else {
-        console.error("An unexpected error occurred:", error);
-        // Logging unexpected errors
-        toast.error("An unexpected error occurred");
-      }
-    }
+      });
   };
-
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -123,7 +103,7 @@ const Signup = () => {
               </label>
               <div className="mt-1 relative">
                 <input
-                  type="password"
+                  type={visible ? "text" : "password"}
                   name="password"
                   autoComplete="current-password"
                   required
@@ -202,4 +182,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Singup;
