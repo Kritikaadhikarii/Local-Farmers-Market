@@ -13,7 +13,6 @@ const FAQPage = () => {
   );
 };
 
-// static component
 const Faq = () => {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -27,8 +26,7 @@ const Faq = () => {
 
   return (
     <div className={`${styles.section} my-8`}>
-      <h2 className="text-3xl font-bold text-#85B27D mb-8" style={{ color: "#85B27D" }}>FAQ</h2>
-
+      <h2 className="text-3xl font-bold text-gray-900 mb-8">FAQ</h2>
       <div className="mx-auto space-y-4">
         {/* single Faq */}
 
@@ -45,7 +43,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -59,7 +57,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -95,7 +93,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -109,7 +107,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -144,7 +142,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -158,7 +156,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -193,7 +191,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -207,7 +205,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -243,7 +241,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -257,7 +255,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -271,7 +269,7 @@ const Faq = () => {
           {activeTab === 6 && (
             <div className="mt-4">
               <p className="text-base text-gray-500">
-                Currently, we only offer shipping within the Nepal.
+                Currently, we only offer shipping within the United States.
               </p>
             </div>
           )}
@@ -290,7 +288,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -304,7 +302,7 @@ const Faq = () => {
                 className="h-6 w-6 text-gray-500"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="#85B27D"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
