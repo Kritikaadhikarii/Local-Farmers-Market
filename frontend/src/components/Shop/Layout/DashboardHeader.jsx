@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { backend_url } from "../../../server";
+import logo from "../../../images/logo.png";
 
 const DashboardHeader = () => {
   const { seller } = useSelector((state) => state.seller);
@@ -14,44 +15,15 @@ const DashboardHeader = () => {
       <div>
         <Link to="/dashboard">
           <img
-            src="../../../images/logo.png"
+            src={logo}
             alt=""
+            style={{ width: "100px", height: "auto", margin: "0 auto" }}
           />
         </Link>
       </div>
       <div className="flex items-center">
         <div className="flex items-center mr-4">
-          <Link to="/dashboard/cupouns" className="800px:block hidden">
-            <AiOutlineGift
-              color="#555"
-              size={30}
-              className="mx-5 cursor-pointer"
-            />
-          </Link>
-          <Link to="/dashboard-events" className="800px:block hidden">
-            <MdOutlineLocalOffer
-              color="#555"
-              size={30}
-              className="mx-5 cursor-pointer"
-            />
-          </Link>
-          <Link to="/dashboard-products" className="800px:block hidden">
-            <FiShoppingBag
-              color="#555"
-              size={30}
-              className="mx-5 cursor-pointer"
-            />
-          </Link>
-          <Link to="/dashboard-orders" className="800px:block hidden">
-            <FiPackage color="#555" size={30} className="mx-5 cursor-pointer" />
-          </Link>
-          <Link to="/dashboard-messages" className="800px:block hidden">
-            <BiMessageSquareDetail
-              color="#555"
-              size={30}
-              className="mx-5 cursor-pointer"
-            />
-          </Link>
+
           <Link to={`/shop/${seller._id}`}>
             <img
               src={`${backend_url}${seller.avatar}`}
