@@ -48,13 +48,6 @@ const AdminHeader = () => {
           <Link to="/dashboard-orders" className="800px:block hidden">
             <FiPackage color="#555" size={30} className="mx-5 cursor-pointer" />
           </Link>
-          <Link to="/dashboard-messages" className="800px:block hidden">
-            <BiMessageSquareDetail
-              color="#555"
-              size={30}
-              className="mx-5 cursor-pointer"
-            />
-          </Link>
             <img
               src={`${backend_url}${user?.avatar}`}
               alt=""
@@ -66,4 +59,4 @@ const AdminHeader = () => {
   )
 }
 
-export default AdminHeader
+export default AdminHeaderr

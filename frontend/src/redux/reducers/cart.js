@@ -6,27 +6,23 @@ const initialState = {
     : [],
 };
 
-export const cartReducer = createReducer(initialState, {
-  addToCart: (state, action) => {
-    const item = action.payload;
-    const isItemExist = state.cart.find((i) => i._id === item._id);
-    if (isItemExist) {
-      return {
-        ...state,
-        cart: state.cart.map((i) => (i._id === isItemExist._id ? item : i)),
-      };
-    } else {
-      return {
-        ...state,
-        cart: [...state.cart, item],
-      };
-    }
-  },
+export const cartReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase('addToCart', (state, action) => {
+      const item = action.payload;
+      const existingItemIndex = state.cart.findIndex(i => i._id === item._id);
 
-  removeFromCart: (state, action) => {
-    return {
-      ...state,
-      cart: state.cart.filter((i) => i._id !== action.payload),
-    };
-  },
+      if (existingItemIndex !== -1) {
+        // Update the item directly using the index if it already exists
+        state.cart[existingItemIndex] = item;
+      } else {
+        // Add the new item to the cart if it does not exist
+        state.cart.push(item);
+      }
+    })
+    .addCase('removeFromCart', (state, action) => {
+      const itemId = action.payload;
+      // Remove item from cart using direct mutation
+      state.cart = state.cart.filter(i => i._id !== itemId);
+    });
 });
