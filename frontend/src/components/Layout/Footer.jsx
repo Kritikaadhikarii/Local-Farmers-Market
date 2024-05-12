@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../images/logo.png";
 
-const Footer = () => {
+const aFooter = () => {
   return (
     <div className="bg-[#000] text-white text-center py-16">
       <ul>

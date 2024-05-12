@@ -59,4 +59,4 @@ const AdminHeader = () => {
   )
 }
 
-export default AdminHeaderr
+export default AdminHeader

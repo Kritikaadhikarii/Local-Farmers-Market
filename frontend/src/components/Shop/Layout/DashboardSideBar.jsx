@@ -129,22 +129,6 @@ const DashboardSideBar = ({ active }) => {
       </div>
 
       <div className="w-full flex items-center p-4">
-        <Link to="/dashboard-messages" className="w-full flex items-center">
-          <BiMessageSquareDetail
-            size={30}
-            color={`${active === 8 ? "crimson" : "#555"}`}
-          />
-          <h5
-            className={`hidden 800px:block pl-2 text-[18px] font-[400] ${
-              active === 8 ? "text-[crimson]" : "text-[#555]"
-            }`}
-          >
-            Shop Inbox
-          </h5>
-        </Link>
-      </div>
-
-      <div className="w-full flex items-center p-4">
         <Link to="/dashboard-coupouns" className="w-full flex items-center">
           <AiOutlineGift
             size={30}

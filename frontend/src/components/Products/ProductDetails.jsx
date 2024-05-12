@@ -89,27 +89,6 @@ const ProductDetails = ({ data }) => {
 
   const averageRating = avg.toFixed(2);
 
-  const handleMessageSubmit = async () => {
-    if (isAuthenticated) {
-      const groupTitle = data._id + user._id;
-      const userId = user._id;
-      const sellerId = data.shop._id;
-      await axios
-        .post(`${server}/conversation/create-new-conversation`, {
-          groupTitle,
-          userId,
-          sellerId,
-        })
-        .then((res) => {
-          navigate(`/inbox?${res.data.conversation._id}`);
-        })
-        .catch((error) => {
-          toast.error(error.response.data.message);
-        });
-    } else {
-      toast.error("Please login to create a conversation");
-    }
-  };
 
   return (
     <div className="bg-white">
@@ -224,7 +203,6 @@ const ProductDetails = ({ data }) => {
                   </div>
                   <div
                     className={`${styles.button} bg-[#6443d1] mt-4 !rounded !h-11`}
-                    onClick={handleMessageSubmit}
                   >
                     <span className="text-white flex items-center">
                       Send Message <AiOutlineMessage className="ml-1" />
