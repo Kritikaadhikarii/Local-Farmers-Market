@@ -196,14 +196,15 @@ export const categoriesData = [
     title: "Vegetables",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-justicon-flat-justicon/64/external-vegetables-healthy-food-and-vegan-justicon-flat-justicon.png",
+    "https://img.icons8.com/external-justicon-flat-justicon/10/external-vegetables-healthy-food-and-vegan-justicon-flat-justicon.png",
+    style: { width: "1000000px" },
   },
   {
     id: 2,
     title: "Fruits",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-fruits-farm-flaticons-flat-flat-icons.png",
+      "https://img.icons8.com/external-flaticons-flat-flat-icons/10/external-fruits-farm-flaticons-flat-flat-icons.png",
   },
   {
     id: 3,
@@ -211,14 +212,14 @@ export const categoriesData = [
     title: "Dry Foods",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-justicon-flat-justicon/64/external-almond-healthy-food-and-vegan-justicon-flat-justicon.png",
+      "https://img.icons8.com/external-justicon-flat-justicon/10/external-almond-healthy-food-and-vegan-justicon-flat-justicon.png",
   },
   {
     // clothes => meat and fish
     id: 4,
     title: "Meat and Fish",
     subTitle: "",
-    image_Url: "https://img.icons8.com/emoji/48/meat-on-bone-emoji.png",
+    image_Url: "https://img.icons8.com/emoji/10/meat-on-bone-emoji.png",
   },
   {
     // shoes => dairy products
@@ -226,14 +227,14 @@ export const categoriesData = [
     title: "Dairy Products",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-smashingstocks-circular-smashing-stocks/65/external-milk-bottle-food-smashingstocks-circular-smashing-stocks.png",
+      "https://img.icons8.com/external-smashingstocks-circular-smashing-stocks/10/external-milk-bottle-food-smashingstocks-circular-smashing-stocks.png",
   },
   {
     // gifts => bakery products
     id: 6,
     title: "Bakery Products",
     subTitle: "",
-    image_Url: "https://img.icons8.com/3d-fluency/94/croissant.png",
+    image_Url: "https://img.icons8.com/3d-fluency/100/croissant.png",
   },
   {
     // pet care => Jam
@@ -241,7 +242,7 @@ export const categoriesData = [
     title: "Jam",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-justicon-flat-justicon/64/external-jam-healthy-food-and-vegan-justicon-flat-justicon.png",
+      "https://img.icons8.com/external-justicon-flat-justicon/100/external-jam-healthy-food-and-vegan-justicon-flat-justicon.png",
   },
   {
     id: 8,
@@ -249,7 +250,7 @@ export const categoriesData = [
     title: "Juice",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-justicon-flat-justicon/64/external-apple-juice-healthy-food-and-vegan-justicon-flat-justicon.png",
+      "https://img.icons8.com/external-justicon-flat-justicon/100/external-apple-juice-healthy-food-and-vegan-justicon-flat-justicon.png",
   },
   {
     id: 9,
@@ -257,14 +258,15 @@ export const categoriesData = [
     title: "Grains and Beans",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-justicon-flat-justicon/64/external-grain-healthy-food-and-vegan-justicon-flat-justicon.png",
+      "https://img.icons8.com/external-justicon-flat-justicon/100/external-grain-healthy-food-and-vegan-justicon-flat-justicon.png",
+    class: "image-small"
   },
   {
     id: 10,
     title: "Others",
     subTitle: "",
     image_Url:
-      "https://searchspring.com/wp-content/uploads/2022/10/Hero-Image-Platform-Others-2.png",
+      "https://searchspring.com/wp-content/uploads/2022/100/Hero-Image-Platform-Others-2.png",
   },
 ];
 
