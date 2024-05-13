@@ -201,13 +201,13 @@ const ProductDetails = ({ data }) => {
                       ({averageRating}/5) Ratings
                     </h5>
                   </div>
-                  <div
+                  {/* <div
                     className={`${styles.button} bg-[#6443d1] mt-4 !rounded !h-11`}
                   >
                     <span className="text-white flex items-center">
                       Send Message <AiOutlineMessage className="ml-1" />
                     </span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -260,8 +260,33 @@ const ProductDetailsInfo = ({
             Product Reviews
           </h5>
           {active === 2 ? (
+  <div className="w-full min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll">
+    {data && data.reviews ? (
+      data.reviews.map((item, index) => (
+        <div className="w-full flex my-2" key={index}>
+          <img
+            src={`${backend_url}/${item.user.avatar}`}
+            alt=""
+            className="w-[50px] h-[50px] rounded-full"
+          />
+          <div className="pl-2 ">
+            <div className="w-full flex items-center">
+              <h1 className="font-[500] mr-3">{item.user.name}</h1>
+              <Ratings rating={data?.ratings} />
+            </div>
+            <p>{item.comment}</p>
+          </div>
+        </div>
+      ))
+    ) : (
+      <div>No reviews available</div>
+    )}
+  </div>
+) : null}
+
+          {/* {active === 2 ? (
             <div className={`${styles.active_indicator}`} />
-          ) : null}
+          ) : null} */}
         </div>
         <div className="relative">
           <h5
@@ -285,7 +310,7 @@ const ProductDetailsInfo = ({
         </>
       ) : null}
 
-      {active === 2 ? (
+      {/* {active === 2 ? (
         <div className="w-full min-h-[40vh] flex flex-col items-center py-3 overflow-y-scroll">
           {data &&
             data.reviews.map((item, index) => (
@@ -311,7 +336,7 @@ const ProductDetailsInfo = ({
             )}
           </div>
         </div>
-      ) : null}
+      ) : null} */}
 
       {active === 3 && (
         <div className="w-full block 800px:flex p-5">
