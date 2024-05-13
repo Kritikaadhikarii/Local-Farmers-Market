@@ -196,7 +196,7 @@ export const categoriesData = [
     title: "Vegetables",
     subTitle: "",
     image_Url:
-    "https://img.icons8.com/external-justicon-flat-justicon/10/external-vegetables-healthy-food-and-vegan-justicon-flat-justicon.png",
+    "https://img.icons8.com/external-justicon-flat-justicon/100/external-vegetables-healthy-food-and-vegan-justicon-flat-justicon.png",
     style: { width: "1000000px" },
   },
   {
@@ -204,7 +204,7 @@ export const categoriesData = [
     title: "Fruits",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-flaticons-flat-flat-icons/10/external-fruits-farm-flaticons-flat-flat-icons.png",
+      "https://img.icons8.com/external-flaticons-flat-flat-icons/100/external-fruits-farm-flaticons-flat-flat-icons.png",
   },
   {
     id: 3,
@@ -212,14 +212,14 @@ export const categoriesData = [
     title: "Dry Foods",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-justicon-flat-justicon/10/external-almond-healthy-food-and-vegan-justicon-flat-justicon.png",
+      "https://img.icons8.com/external-justicon-flat-justicon/100/external-almond-healthy-food-and-vegan-justicon-flat-justicon.png",
   },
   {
     // clothes => meat and fish
     id: 4,
     title: "Meat and Fish",
     subTitle: "",
-    image_Url: "https://img.icons8.com/emoji/10/meat-on-bone-emoji.png",
+    image_Url: "https://img.icons8.com/emoji/100/meat-on-bone-emoji.png",
   },
   {
     // shoes => dairy products
@@ -227,7 +227,7 @@ export const categoriesData = [
     title: "Dairy Products",
     subTitle: "",
     image_Url:
-      "https://img.icons8.com/external-smashingstocks-circular-smashing-stocks/10/external-milk-bottle-food-smashingstocks-circular-smashing-stocks.png",
+      "https://img.icons8.com/external-smashingstocks-circular-smashing-stocks/100/external-milk-bottle-food-smashingstocks-circular-smashing-stocks.png",
   },
   {
     // gifts => bakery products
