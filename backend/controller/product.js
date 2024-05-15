@@ -22,7 +22,6 @@ router.post(
       } else {
         const files = req.files;
         const imageUrls = files.map((file) => `${file.filename}`);
-
         const productData = req.body;
         productData.images = imageUrls;
         productData.shop = shop;
@@ -69,7 +68,7 @@ router.delete(
 
       productData.images.forEach((imageUrl) => {
         const filename = imageUrl;
-        const filePath = `uploads/${filename}`;
+        const filePath = `../uploads/${filename}`;
 
         fs.unlink(filePath, (err) => {
           if (err) {

@@ -80,7 +80,7 @@ router.delete(
 
       eventData.images.forEach((imageUrl) => {
         const filename = imageUrl;
-        const filePath = `uploads/${filename}`;
+        const filePath = `../uploads/${filename}`;
 
         fs.unlink(filePath, (err) => {
           if (err) {

@@ -16,7 +16,7 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
     const sellerEmail = await Shop.findOne({ email });
     if (sellerEmail) {
       const filename = req.file.filename;
-      const filePath = `uploads/${filename}`;
+      const filePath = `../uploads/${filename}`;
       fs.unlink(filePath, (err) => {
         if (err) {
           console.log(err);
@@ -140,7 +140,7 @@ router.put(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const existsSeller = await Shop.findById(req.seller._id);
-      const existAvatarPath = `uploads/${existsSeller.avatar}`;
+      const existAvatarPath = `../uploads/${existsSeller.avatar}`;
 
       fs.unlinkSync(existAvatarPath);
 

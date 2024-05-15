@@ -16,7 +16,7 @@ router.post("/create-user", upload.single("file"), async (req, res, next) => {
 
     if (userEmail) {
       const filename = req.file.filename;
-      const filePath = `uploads/${filename}`;
+      const filePath = `../uploads/${filename}`;
       fs.unlink(filePath, (err) => {
         if (err) {
           console.log(err);
@@ -160,21 +160,35 @@ router.put(
   upload.single("image"),
   catchAsyncErrors(async (req, res, next) => {
     try {
-      const existsUser = await User.findById(req.user.id);
+      console.log("aaaaaaa");
+      const user = await User.findById(req.user.id);
 
-      const existAvatarPath = `uploads/${existsUser.avatar}`;
+      if (!user) {
+        return next(new ErrorHandler("User not found", 404));
+      }
 
-      fs.unlinkSync(existAvatarPath);
+      // // Check if user already has an avatar
+      // if (user.avatar) {
+      //   const avatarPath = path.join(__dirname, `../uploads/${user.avatar}`);
 
-      const fileUrl = path.join(req.file.filename);
+      //   // Verify if the file exists before attempting to delete
+      //   if (fs.existsSync(avatarPath)) {
+      //     fs.unlinkSync(avatarPath);
+      //   } else {
+      //     console.log("Avatar file not found:", avatarPath);
+      //   }
+      // }
 
-      const user = await User.findByIdAndUpdate(req.user.id, {
-        avatar: fileUrl,
-      });
+      // Save the new avatar path to the user
+      console.log("User before save:", user);
+      user.avatar = req.file.filename;
+      await user.save();
+      console.log("User after save:", user);
 
       res.status(200).json({
         success: true,
-        user,
+        message: "Avatar updated successfully",
+        avatar: user.avatar,
       });
     } catch (error) {
       return next(new ErrorHandler(error.message, 500));
