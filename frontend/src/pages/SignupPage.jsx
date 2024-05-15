@@ -9,13 +9,13 @@ const SignupPage = () => {
 
   useEffect(() => {
     // in case if user is already logged in
-    if(isAuthenticated === true){
+    if (isAuthenticated === true) {
       navigate("/");
     }
   }, [])
   return (
     <div>
-        <Signup />
+      <Signup />
     </div>
   )
 }
