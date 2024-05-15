@@ -10,7 +10,9 @@ import { toast } from "react-toastify";
 const EventCard = ({ active, data }) => {
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
+  if (!data || !data.images) {
+    return <div>No event data available</div>;
+  }
   const addToCartHandler = (data) => {
     const isItemExists = cart && cart.find((i) => i._id === data._id);
     if (isItemExists) {

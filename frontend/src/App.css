@@ -15,3 +15,6 @@ body {
     background: #F6F6F5;
     scroll-behavior: smooth;
 }
+.image-small {
+  width: 70px;
+}

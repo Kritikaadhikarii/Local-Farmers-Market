@@ -20,8 +20,7 @@ const Hero = () => {
           Best Collection for <br /> Farm Products
         </h1>
         <p className="pt-5 text-[16px] font-[Poppins] font-[400] text-[#000000ba]">
-        Local Farmers Market App aims to bridge the gap between consumers and local producers, offering a seamless platform for discovering and purchasing fresh, locally sourced goods. Through intuitive features like online ordering, we want to empower our community to support local farmers and artisans while fostering a sense of connection and belonging.
-        </p>
+        Our app, the Local Farmers Market App, is designed to bring local producers and consumers closer together. It makes it easy for you to discover and buy fresh, locally sourced goods. With features like online ordering, we want to help you support your local farmers and artisans while feeling connected to your community.        </p>
         <Link to="/products" className="inline-block">
           <div className={`${styles.button} mt-5`}>
             <span className="text-[#fff] font-[Poppins] text-[18px]">
