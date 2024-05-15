@@ -1,4 +1,4 @@
-# Car Rental Service
+# Local Farmers Market
 
 Welcome to the Local Farmers Market project! This project is built using the MERN (MongoDB, Express.js, React.js, Node.js) stack, allowing farmers to sell their product through a web application.
 
