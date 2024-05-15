@@ -34,7 +34,7 @@ const ShopCreate = () => {
     axios
       .post(`${server}/shop/create-shop`, newForm, config)
       .then((res) => {
-        toast.success(res.data.message);
+        toast.success('Seller Account successfully created ! Please click on login now to login to the dashboard and access different features');
         setName("");
         setEmail("");
         setPassword("");
