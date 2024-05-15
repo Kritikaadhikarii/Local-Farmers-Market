@@ -1,33 +1,36 @@
 const ErrorHandler = require("../utils/ErrorHandler");
 
 module.exports = (err, req, res, next) => {
+  // Set default status code and message for the error
   err.statusCode = err.statusCode || 500;
-  err.message = err.message || "Internal server Error";
+  err.message = err.message || "Internal Server Error";
 
-  // wrong mongodb id error
+  // Handle specific error types
+  // Wrong MongoDB ID error
   if (err.name === "CastError") {
-    const message = `Resources not found with this id.. Invalid ${err.path}`;
+    const message = `Resource not found with this ID. Invalid ${err.path}`;
     err = new ErrorHandler(message, 400);
   }
 
   // Duplicate key error
   if (err.code === 11000) {
-    const message = `Duplicate key ${Object.keys(err.keyValue)} Entered`;
+    const message = `Duplicate key ${Object.keys(err.keyValue)} entered`;
     err = new ErrorHandler(message, 400);
   }
 
-  // wrong jwt error
+  // Wrong JWT error
   if (err.name === "JsonWebTokenError") {
-    const message = `Your url is invalid please try again letter`;
+    const message = "Invalid token. Please provide a valid token.";
     err = new ErrorHandler(message, 400);
   }
 
-  // jwt expired
+  // JWT expired error
   if (err.name === "TokenExpiredError") {
-    const message = `Your Url is expired please try again letter!`;
+    const message = "Token expired. Please login again.";
     err = new ErrorHandler(message, 400);
   }
 
+  // Send error response to the client
   res.status(err.statusCode).json({
     success: false,
     message: err.message,

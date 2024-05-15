@@ -9,12 +9,12 @@ import { toast } from "react-toastify";
 
 const ShopSettings = () => {
   const { seller } = useSelector((state) => state.seller);
-  const [avatar,setAvatar] = useState();
-  const [name,setName] = useState(seller && seller.name);
-  const [description,setDescription] = useState(seller && seller.description ? seller.description : "");
-  const [address,setAddress] = useState(seller && seller.address);
-  const [phoneNumber,setPhoneNumber] = useState(seller && seller.phoneNumber);
-  const [zipCode,setZipcode] = useState(seller && seller.zipCode);
+  const [avatar, setAvatar] = useState();
+  const [name, setName] = useState(seller && seller.name);
+  const [description, setDescription] = useState(seller && seller.description ? seller.description : "");
+  const [address, setAddress] = useState(seller && seller.address);
+  const [phoneNumber, setPhoneNumber] = useState(seller && seller.phoneNumber);
+  const [zipCode, setZipcode] = useState(seller && seller.zipCode);
 
 
   const dispatch = useDispatch();
@@ -27,39 +27,37 @@ const ShopSettings = () => {
     const formData = new FormData();
 
     formData.append("image", e.target.files[0]);
-    
-    await axios.put(`${server}/shop/update-shop-avatar`, formData,{
-        headers: {
-            "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true,
-    }).then((res) => {
-        dispatch(loadSeller());
-        toast.success("Avatar updated successfully!")
+
+    await axios.put(`${server}/shop/update-shop-avatar`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      withCredentials: true,
+    }).then(() => {
+      dispatch(loadSeller());
+      toast.success("Avatar updated successfully!")
     }).catch((error) => {
-        toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
     })
 
   };
 
   const updateHandler = async (e) => {
     e.preventDefault();
-    
+
     await axios.put(`${server}/shop/update-seller-info`, {
-        name,
-        address,
-        zipCode,
-        phoneNumber,
-        description,
-    }, {withCredentials: true}).then((res) => {
-        toast.success("Shop info updated succesfully!");
-        dispatch(loadSeller());
-    }).catch((error)=> {
-        toast.error(error.response.data.message);
+      name,
+      address,
+      zipCode,
+      phoneNumber,
+      description,
+    }, { withCredentials: true }).then(() => {
+      toast.success("Shop info updated succesfully!");
+      dispatch(loadSeller());
+    }).catch((error) => {
+      toast.error(error.response.data.message);
     })
   };
-
-
 
   return (
     <div className="w-full min-h-screen flex flex-col items-center">
@@ -112,11 +110,10 @@ const ShopSettings = () => {
             </div>
             <input
               type="name"
-              placeholder={`${
-                seller?.description
-                  ? seller.description
-                  : "Enter your shop description"
-              }`}
+              placeholder={`${seller?.description
+                ? seller.description
+                : "Enter your shop description"
+                }`}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               className={`${styles.input} !w-[95%] mb-4 800px:mb-0`}

@@ -32,7 +32,7 @@ const Singup = () => {
 
     axios
       .post(`${server}/user/create-user`, newForm, config)
-      .then((res) => {
+      .then(() => {
         toast.success("Signup successful, now go to the login page");
         setName("");
         setEmail("");

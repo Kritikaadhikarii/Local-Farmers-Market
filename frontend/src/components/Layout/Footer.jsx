@@ -15,7 +15,7 @@ const Footer = () => {
 
       <div>
         <div>© 2024 Local Farmers Market. All rights reserved.</div>
-        <div>Developed by: Kritika</div>
+        <div>Developed by: Group E</div>
       </div>
     </div>
   );

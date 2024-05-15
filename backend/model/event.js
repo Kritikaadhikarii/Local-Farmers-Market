@@ -1,62 +1,75 @@
 const mongoose = require("mongoose");
 
 const eventSchema = new mongoose.Schema({
-    name:{
+    // Name of the event product
+    name: {
         type: String,
-        required:[true,"Please enter your event product name!"],
+        required: [true, "Please enter your event product name!"],
     },
-    description:{
+    // Description of the event product
+    description: {
         type: String,
-        required:[true,"Please enter your event product description!"],
+        required: [true, "Please enter your event product description!"],
     },
-    category:{
+    // Category of the event product
+    category: {
         type: String,
-        required:[true,"Please enter your event product category!"],
+        required: [true, "Please enter your event product category!"],
     },
+    // Start date of the event
     start_Date: {
         type: Date,
         required: true,
-      },
-      Finish_Date: {
+    },
+    // Finish date of the event
+    Finish_Date: {
         type: Date,
         required: true,
-      },
-      status: {
+    },
+    // Status of the event (e.g., "Running", "Ended")
+    status: {
         type: String,
         default: "Running",
-      },
-    tags:{
+    },
+    // Tags associated with the event product
+    tags: {
         type: String,
     },
-    originalPrice:{
+    // Original price of the event product
+    originalPrice: {
         type: Number,
     },
-    discountPrice:{
+    // Discounted price of the event product
+    discountPrice: {
         type: Number,
-        required: [true,"Please enter your event product price!"],
+        required: [true, "Please enter your event product price!"],
     },
-    stock:{
+    // Stock quantity of the event product
+    stock: {
         type: Number,
-        required: [true,"Please enter your event product stock!"],
+        required: [true, "Please enter your event product stock!"],
     },
-    images:[
-        {
-            type: String,
-        },
-    ],
-    shopId:{
+    // URLs of images associated with the event product
+    images: [{
+        type: String,
+    }],
+    // ID of the shop associated with the event product
+    shopId: {
         type: String,
         required: true,
     },
-    shop:{
+    // Details of the shop associated with the event product
+    shop: {
         type: Object,
         required: true,
     },
-    sold_out:{
+    // Number of items sold out
+    sold_out: {
         type: Number,
         default: 0,
     },
-    createdAt:{
+    // Timestamp indicating when the event product was created
+    createdAt: {
         type: Date,
         default: Date.now(),
     }
