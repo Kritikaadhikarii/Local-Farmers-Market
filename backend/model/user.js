@@ -3,53 +3,59 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const userSchema = new mongoose.Schema({
+  // Name of the user
   name: {
     type: String,
     required: [true, "Please enter your name!"],
   },
+  // Email address of the user
   email: {
     type: String,
     required: [true, "Please enter your email!"],
   },
+  // Password of the user (hashed)
   password: {
     type: String,
     required: [true, "Please enter your password"],
     minLength: [4, "Password should be greater than 4 characters"],
-    select: false,
+    select: false, // Password won't be returned in queries by default
   },
+  // Phone number of the user
   phoneNumber: {
     type: Number,
   },
-  addresses: [
-    {
-      country: {
-        type: String,
-      },
-      city: {
-        type: String,
-      },
-      address1: {
-        type: String,
-      },
-      address2: {
-        type: String,
-      },
-      zipCode: {
-        type: Number,
-      },
-      addressType: {
-        type: String,
-      },
-    }
-  ],
+  // Array of user addresses
+  addresses: [{
+    country: {
+      type: String,
+    },
+    city: {
+      type: String,
+    },
+    address1: {
+      type: String,
+    },
+    address2: {
+      type: String,
+    },
+    zipCode: {
+      type: Number,
+    },
+    addressType: {
+      type: String,
+    },
+  }],
+  // Role of the user (default is "user")
   role: {
     type: String,
     default: "user",
   },
+  // Avatar (profile picture) of the user
   avatar: {
     type: String,
     required: true,
   },
+  // Timestamp indicating when the user was created
   createdAt: {
     type: Date,
     default: Date.now,

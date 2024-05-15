@@ -9,14 +9,14 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ErrorHandler = require("../utils/ErrorHandler");
 const sendShopToken = require("../utils/shopToken");
 
-// create shop
+// Create a new shop
 router.post("/create-shop", upload.single("file"), async (req, res, next) => {
   try {
     const { email, name, password, address, phoneNumber, zipCode } = req.body;
     const sellerEmail = await Shop.findOne({ email });
     if (sellerEmail) {
       const filename = req.file.filename;
-      const filePath = `../uploads/${filename}`;
+      const filePath = path.join(__dirname, "../uploads", filename);
       fs.unlink(filePath, (err) => {
         if (err) {
           console.log(err);
@@ -27,7 +27,7 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
     }
 
     const filename = req.file.filename;
-    const fileUrl = path.join(filename);
+    const fileUrl = path.join("uploads", filename);
 
     const seller = await Shop.create({
       name,
@@ -36,7 +36,7 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
       avatar: fileUrl,
       address,
       phoneNumber,
-      zipCode
+      zipCode,
     });
 
     sendShopToken(seller, 201, res);
@@ -45,7 +45,7 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
   }
 });
 
-// login shop
+// Login shop
 router.post(
   "/login-shop",
   catchAsyncErrors(async (req, res, next) => {
@@ -75,7 +75,7 @@ router.post(
   })
 );
 
-// load shop
+// Load shop details
 router.get(
   "/getSeller",
   isSeller,
@@ -97,7 +97,7 @@ router.get(
   })
 );
 
-// log out from shop
+// Log out from shop
 router.get(
   "/logout",
   catchAsyncErrors(async (req, res, next) => {
@@ -116,7 +116,7 @@ router.get(
   })
 );
 
-// get shop info
+// Get shop info by ID
 router.get(
   "/get-shop-info/:id",
   catchAsyncErrors(async (req, res, next) => {
@@ -132,7 +132,7 @@ router.get(
   })
 );
 
-// update shop profile picture
+// Update shop profile picture
 router.put(
   "/update-shop-avatar",
   isSeller,
@@ -140,11 +140,11 @@ router.put(
   catchAsyncErrors(async (req, res, next) => {
     try {
       const existsSeller = await Shop.findById(req.seller._id);
-      const existAvatarPath = `../uploads/${existsSeller.avatar}`;
+      const existAvatarPath = path.join(__dirname, "../uploads", existsSeller.avatar);
 
       fs.unlinkSync(existAvatarPath);
 
-      const fileUrl = path.join(req.file.filename);
+      const fileUrl = path.join("uploads", req.file.filename);
       const seller = await Shop.findByIdAndUpdate(req.seller._id, {
         avatar: fileUrl,
       });
@@ -159,14 +159,14 @@ router.put(
   })
 );
 
-// update seller info
+// Update seller info
 router.put(
   "/update-seller-info",
   isSeller,
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { name, description, address, phoneNumber, zipCode } = req.body;
-      const shop = await Shop.findOne(req.seller._id);
+      const shop = await Shop.findById(req.seller._id);
 
       if (!shop) {
         return next(new ErrorHandler("Seller not found", 400));
@@ -190,7 +190,7 @@ router.put(
   })
 );
 
-// all sellers --- for admin
+// Get all sellers for admin
 router.get(
   "/admin-all-sellers",
   isAuthenticated,
@@ -210,7 +210,7 @@ router.get(
   })
 );
 
-// delete seller ---admin
+// Delete seller by admin
 router.delete(
   "/delete-seller/:id",
   isAuthenticated,
@@ -237,7 +237,7 @@ router.delete(
   })
 );
 
-// update seller withdraw methods --- sellers
+// Update seller withdraw methods
 router.put(
   "/update-payment-methods",
   isSeller,
@@ -259,7 +259,7 @@ router.put(
   })
 );
 
-// delete seller withdraw methods --- only seller
+// Delete seller withdraw methods
 router.delete(
   "/delete-withdraw-method/",
   isSeller,

@@ -7,14 +7,14 @@ const Order = require("../model/order");
 const Shop = require("../model/shop");
 const Product = require("../model/product");
 
-// create new order
+// Route to create a new order
 router.post(
   "/create-order",
   catchAsyncErrors(async (req, res, next) => {
     try {
       const { cart, shippingAddress, user, totalPrice, paymentInfo } = req.body;
 
-      //   group cart items by shopId
+      // Group cart items by shopId
       const shopItemsMap = new Map();
 
       for (const item of cart) {
@@ -25,7 +25,7 @@ router.post(
         shopItemsMap.get(shopId).push(item);
       }
 
-      // create an order for each shop
+      // Create an order for each shop
       const orders = [];
 
       for (const [shopId, items] of shopItemsMap) {
@@ -49,7 +49,7 @@ router.post(
   })
 );
 
-// get all orders of user
+// Route to get all orders of a user by user ID
 router.get(
   "/get-all-orders/:userId",
   catchAsyncErrors(async (req, res, next) => {
@@ -68,7 +68,7 @@ router.get(
   })
 );
 
-// get all orders of seller
+// Route to get all orders of a seller by shop ID
 router.get(
   "/get-seller-all-orders/:shopId",
   catchAsyncErrors(async (req, res, next) => {
@@ -89,7 +89,7 @@ router.get(
   })
 );
 
-// update order status for seller
+// Route for seller to update order status by order ID
 router.put(
   "/update-order-status/:id",
   isSeller,
@@ -100,6 +100,7 @@ router.put(
       if (!order) {
         return next(new ErrorHandler("Order not found with this id", 400));
       }
+
       if (req.body.status === "Transferred to delivery partner") {
         order.cart.forEach(async (o) => {
           await updateOrder(o._id, o.qty);
@@ -111,7 +112,7 @@ router.put(
       if (req.body.status === "Delivered") {
         order.deliveredAt = Date.now();
         order.paymentInfo.status = "Succeeded";
-        const serviceCharge = order.totalPrice * .10;
+        const serviceCharge = order.totalPrice * 0.10;
         await updateSellerInfo(order.totalPrice - serviceCharge);
       }
 
@@ -122,6 +123,7 @@ router.put(
         order,
       });
 
+      // Function to update product stock and sold count
       async function updateOrder(id, qty) {
         const product = await Product.findById(id);
 
@@ -131,9 +133,10 @@ router.put(
         await product.save({ validateBeforeSave: false });
       }
 
+      // Function to update seller's available balance
       async function updateSellerInfo(amount) {
         const seller = await Shop.findById(req.seller.id);
-        
+
         seller.availableBalance = amount;
 
         await seller.save();
@@ -144,7 +147,7 @@ router.put(
   })
 );
 
-// give a refund ----- user
+// Route for user to request a refund by order ID
 router.put(
   "/order-refund/:id",
   catchAsyncErrors(async (req, res, next) => {
@@ -170,7 +173,7 @@ router.put(
   })
 );
 
-// accept the refund ---- seller
+// Route for seller to accept a refund by order ID
 router.put(
   "/order-refund-success/:id",
   isSeller,
@@ -188,7 +191,7 @@ router.put(
 
       res.status(200).json({
         success: true,
-        message: "Order Refund successfull!",
+        message: "Order Refund successful!",
       });
 
       if (req.body.status === "Refund Success") {
@@ -197,6 +200,7 @@ router.put(
         });
       }
 
+      // Function to update product stock and sold count
       async function updateOrder(id, qty) {
         const product = await Product.findById(id);
 
@@ -211,7 +215,7 @@ router.put(
   })
 );
 
-// all orders --- for admin
+// Route for admin to get all orders
 router.get(
   "/admin-all-orders",
   isAuthenticated,
