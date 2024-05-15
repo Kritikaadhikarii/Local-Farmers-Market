@@ -9,10 +9,10 @@ router.post(
   catchAsyncErrors(async (req, res, next) => {
     const myPayment = await stripe.paymentIntents.create({
       amount: req.body.amount,
-      currency: "npr",
-      metadata: {
-        userId: "acct_1PDrCkRqeFjYRFa7",
-      },
+      currency: "inr",
+      // metadata: {
+      //   userId: "acct_1PDrCkRqeFjYRFa7",
+      // },
     });
     res.status(200).json({
       success: true,
