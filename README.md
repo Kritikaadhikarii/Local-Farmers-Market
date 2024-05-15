@@ -29,12 +29,17 @@ cd ..<br>
 cd frontend <br>
 npm install
 
+# install yarn then run the command below
+yarn
+
 ### Start the Application
 
 # Start the server
 
 cd ..<br>
 cd backend<br>
+npm run dev<br>
+or
 npm start<br>
 
 # start the client
